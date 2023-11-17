@@ -39,6 +39,18 @@ const Profil = () => {
     {id: 2, title: 'Item 2', val: 'item-2'},
   ]);
 
+  const fOpenHandler = () => {
+    setfOpen(false);
+    setOpen(!open);
+  };
+  const sOpenHandler = () => {
+    setOpen(false);
+    setfOpen(!fopen);
+  };
+  const noDropHandler = () => {
+    setOpen(false);
+    setfOpen(false);
+  };
   const CustomPlaceholderComponent = ({label, path}) => {
     console.log('custom placehoder', label, path);
     return (
@@ -199,7 +211,7 @@ const Profil = () => {
                 open={open}
                 value={value}
                 items={items}
-                setOpen={setOpen}
+                setOpen={fOpenHandler}
                 setValue={setValue}
                 setItems={setItems}
               />
@@ -237,12 +249,13 @@ const Profil = () => {
                 open={fopen}
                 value={fvalue}
                 items={fitems}
-                setOpen={setfOpen}
+                setOpen={sOpenHandler}
                 setValue={setfValue}
                 setItems={setfItems}
               />
             </View>
-            <View
+            <TouchableOpacity
+              onPress={noDropHandler}
               style={{
                 flexDirection: 'row',
                 alignItems: 'center',
@@ -269,7 +282,7 @@ const Profil = () => {
                 }}>
                 Geschichte
               </Text>
-            </View>
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </ImageBackground>
